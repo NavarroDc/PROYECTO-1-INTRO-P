@@ -17,6 +17,7 @@ void esperarYLimpiar() {
 int main()
 {
     // Imprimir tildes
+
     setlocale(LC_ALL,"");
     //
     bool salir = false;
@@ -31,27 +32,42 @@ int main()
         cout <<" "<<endl;
         cout <<"Elija una opción"<<endl;
         cin >> seleccion;
+
         // validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
-        if(cin.bad() || !(seleccion >= 1 && seleccion <= 4) )
+        if(!cin.good()) //|| (seleccion >= 1 && seleccion <= 4) )
         {
            cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;
            cin.clear();
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
-           //system("Pause");
+
+           system("Pause");
            system("CLS");
+
            // regresar al inicio
            break;
         }
 
 
-        //ACCIONES SEÚN CADA CASO---------------------------------------------------
+        //ACCIONES SEGÚN CADA CASO---------------------------------------------------
         else{
             switch(seleccion) {
              case 1:{ cout <<"op 1"<<endl; break;}
+
+
              case 2:{ cout <<"op 2"<<endl; break;}
+
+
              case 3:{ cout <<"op 3"<<endl; break;}
-             case 4:{ cout <<"op 4"<<endl; break;}
+
+
+             case 4:{
+                 cout <<"Salir del Programa" <<endl;
+                 salir = true;
+                 break;
+            }
+
+
              default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
             }
             esperarYLimpiar();
