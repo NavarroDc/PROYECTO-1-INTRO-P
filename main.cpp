@@ -8,6 +8,12 @@
 
 using namespace std;
 
+void esperarYLimpiar() {
+    system("Pause");
+    system("CLS");
+}
+
+
 int main()
 {
     // Imprimir tildes
@@ -15,8 +21,7 @@ int main()
     //
     bool salir = false;
     int seleccion;
-    do
-    {
+    do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
         cout <<"1. Ingresar frase a trabajar"<<endl;
@@ -42,33 +47,16 @@ int main()
 
         //ACCIONES SEÚN CADA CASO---------------------------------------------------
         else{
-            switch(seleccion)
-            {
-             case 1:{ cout <<"op 1"<<endl;
-             }
-             break;
-             system("Pause");
-             system("CLS");
-             case 2:{ cout <<"op 2"<<endl;
-             }
-             break;
-             system("Pause");
-             system("CLS");
-             case 3:{ cout <<"op 3"<<endl;
-             }
-             break;
-             system("Pause");
-             system("CLS");
-             case 4:{ cout <<"op 4"<<endl;
-             }
-             break;
-             system("Pause");
-             system("CLS");
-             default: cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;
-             system("Pause");
-             system("CLS");
+            switch(seleccion) {
+             case 1:{ cout <<"op 1"<<endl; break;}
+             case 2:{ cout <<"op 2"<<endl; break;}
+             case 3:{ cout <<"op 3"<<endl; break;}
+             case 4:{ cout <<"op 4"<<endl; break;}
+             default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
             }
-            }
-}while(!salir);
+            esperarYLimpiar();
+        }
+    }while(!salir);
+
     return 0;
 }
