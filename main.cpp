@@ -35,11 +35,12 @@ int main()
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
            //system("Pause");
            system("CLS");
+           // regresar al inicio
            break;
         }
 
 
-//ACCIONES SEÚN CADA CASO---------------------------------------------------
+        //ACCIONES SEÚN CADA CASO---------------------------------------------------
         else{
             switch(seleccion)
             {
