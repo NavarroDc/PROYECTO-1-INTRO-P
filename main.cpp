@@ -35,7 +35,7 @@ int main()
 
         // validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
-        if(!cin.good()) //|| (seleccion >= 1 && seleccion <= 4) )
+        if(cin.bad()) || !(seleccion >= 1 && seleccion <= 4) )
         {
            cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;
            cin.clear();
