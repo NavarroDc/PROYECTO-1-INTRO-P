@@ -6,6 +6,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -52,13 +53,17 @@ int main()
         else{
             switch(seleccion) {
                 case 1:{
-                    string frase;
+                    char frase[100];
                     bool regresarMenu = false;
 
                     do {
                         cout <<" "<<endl;
                         cout <<"Escriba una frase que tenga menos de 100 caracteres."<<endl;
-                        cin >> frase;
+                        cin.getline(frase,100,'\n');
+
+                        for(int i=0;i<=100;i++){
+
+                        }
 
 
 
