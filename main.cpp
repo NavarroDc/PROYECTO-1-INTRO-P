@@ -21,7 +21,7 @@ int main()
     setlocale(LC_ALL,"");
     //
     bool salir = false;
-    int seleccion;
+    int seleccion = 0;
     do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
@@ -35,17 +35,15 @@ int main()
 
         // validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
-        if(cin.bad()) || !(seleccion >= 1 && seleccion <= 4) )
+        bool opcionErronea = cin.bad() || !(seleccion >= 1 && seleccion <= 4);
+        if(opcionErronea)
         {
            cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;
            cin.clear();
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
-           system("Pause");
-           system("CLS");
-
+           esperarYLimpiar();
            // regresar al inicio
-           break;
         }
 
 
