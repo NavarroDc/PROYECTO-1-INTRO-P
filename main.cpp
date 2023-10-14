@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <limits>
+#include <string>
 
 using namespace std;
 
@@ -38,7 +39,7 @@ int main()
         bool opcionErronea = cin.bad() || !(seleccion >= 1 && seleccion <= 4);
         if(opcionErronea)
         {
-           cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;
+           cout <<"Error, sólo puede escribir un número del 1 al 4."<<endl;
            cin.clear();
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
@@ -50,13 +51,42 @@ int main()
         //ACCIONES SEGÚN CADA CASO---------------------------------------------------
         else{
             switch(seleccion) {
-             case 1:{ cout <<"op 1"<<endl; break;}
+                case 1:{
+                    string frase;
+                    bool regresarMenu = false;
+
+                    do {
+                        cout <<" "<<endl;
+                        cout <<"Escriba una frase que tenga menos de 100 caracteres."<<endl;
+                        cin >> frase;
+
+
+
+
+
+
+                    }while(!regresarMenu);
+                }
+
+
+
+
+
+
+
+
 
 
              case 2:{ cout <<"op 2"<<endl; break;}
 
 
+
+
+
              case 3:{ cout <<"op 3"<<endl; break;}
+
+
+
 
 
              case 4:{
@@ -68,8 +98,10 @@ int main()
 
              default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
             }
+            cout <<" " <<endl;
             esperarYLimpiar();
-        }
+         }
+
     }while(!salir);
 
     return 0;
