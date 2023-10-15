@@ -157,15 +157,6 @@ int main()
                         contadorVocalesGeneral = contadorVocales(fraseDeUsuarioTotal);
 
                     } while (continuarAgregando); //Agregar frases hasta que el usuario no desee seguir agregando.
-
-                    //muestra frase y el contador en numero (mientras)
-                    cout<< "La frase total registradsa es: \n "
-                        << fraseDeUsuarioTotal << endl;
-                        //<< "\n Total de frases analizadas: "
-                        //<< contadorFrasesTotal
-                        //<< "\n Total de vocales contabilizadas:"
-                        //<< contadorVocalesGeneral
-                        //<< endl;
                     break;
                 }
                 case 2:{
