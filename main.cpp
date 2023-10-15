@@ -27,6 +27,8 @@ int main()
 
     // Todas las frases agregadas.
     string fraseDeUsuarioTotal;
+    // definir e inicializar contador de frases final
+    int contadorFrasesTotal = 0;
     do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
@@ -91,12 +93,15 @@ int main()
                             continuarAgregando = true;
                         }
                         // Agregar la frase registrada a la frase total.
-                        fraseDeUsuarioTotal.append(fraseUsuario);
+                        fraseDeUsuarioTotal.append(fraseUsuario.append("\n"));
+                        //Agrega un frase cada vez que el usuario ingrese una nueva
+                        contadorFrasesTotal++;
+
 
                     } while (continuarAgregando); //Agregar frases hasta que el usuario no desee seguir agregando.
 
-
-                    cout << "La frase total registradsa es: " << fraseDeUsuarioTotal << endl;
+                    //muestra frase y el contador en numero (mientras)
+                    cout << "La frase total registradsa es: \n " << fraseDeUsuarioTotal <<"\n Total de frases analizadas: "<<  contadorFrasesTotal << endl;
                     break;
                 }
                 case 2:{ cout <<"op 2"<<endl; break;}
