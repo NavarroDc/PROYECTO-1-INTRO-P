@@ -155,7 +155,17 @@ int main()
                         << endl;
                     break;
                 }
-                case 2:{ cout <<"op 2"<<endl; break;}
+                case 2:{
+                //Mostrar Texto: última frase ingresada
+                cout <<"Texto(última frase agregada): "<< ultimaFraseRegistrada << endl;
+                //Cuántas vocales tiene esa última frase
+                int vocalesPorFrase = contadorVocales(ultimaFraseRegistrada);
+                //Mostrar la cantidad de vocales de la última frase
+                cout <<"Total general de vocales:  "<< vocalesPorFrase << endl; break;
+
+
+
+                }
                 case 3:{ cout <<"op 3"<<endl; break;}
                 case 4:{
                     cout <<"Salir del Programa" <<endl;
