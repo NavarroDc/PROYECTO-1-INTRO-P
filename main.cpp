@@ -195,13 +195,39 @@ int main()
                 }
 
                 case 3:{
-                    cout << "\n Total de frases analizadas: "
-                        << contadorFrasesTotal
-                        << "\n Total de vocales contabilizadas:"
-                        << contadorVocalesGeneral
-                        << endl;
-                        break;
+                    bool continuar = true;
+                    do {
+                        // imprimir los resultados
+                        cout << "\n Total de frases analizadas: "
+                            << contadorFrasesTotal
+                            << "\n Total de vocales contabilizadas:"
+                            << contadorVocalesGeneral
+                            << endl;
+
+                        cout <<" "<<endl;
+                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        string respuestaUsuario;
+                        cin>>respuestaUsuario;
+                        // Preguntar hasta que sea una respuesta válida  S o N.
+                        // La función compare retorna un entero, 0 cuando son iguales y
+                        // diferente de cero cuando no son iguales.
+                        while(respuestaUsuario.compare("s") != 0 &&
+                              respuestaUsuario.compare("S") != 0 &&
+                              respuestaUsuario.compare("N") != 0 &&
+                              respuestaUsuario.compare("n") != 0){
+                            //Lo que debe mostrar si la respuesta no es S o N
+                            cout << " ";
+                            cout << "Error, sólo deber digitar S o N." <<endl;
+                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            cin>>respuestaUsuario;
                         }
+                        // sale del while cuando es una respuesta valida
+                        if (respuestaUsuario.compare("S") == 0 || respuestaUsuario.compare("s") == 0 ){
+                            continuar = false;
+                        }
+                    } while (continuar);
+                    break;
+                }
 
                 case 4:{
                     cout <<"Salir del Programa" <<endl;
