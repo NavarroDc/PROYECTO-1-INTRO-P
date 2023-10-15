@@ -14,7 +14,45 @@ void esperarYLimpiar() {
     system("Pause");
     system("CLS");
 }
-
+int contadorVocales(string miFrase) {
+  int contadorVocales = 0;
+  for (int i = 0; i < miFrase.length(); i++) {
+    int caracterCode = int(miFrase[i]);
+    switch (caracterCode) {
+    /* Se está utilizando la table de ASCII code para
+    representar las vocales con sus respectivos valores numéricos.
+    */
+    case 97:  //a
+    case 160: //á
+    case 65:  //A
+    case 181: //Á
+    //
+    case 101: //e
+    case 130: //é
+    case 69:  //E
+    case 141: //É
+    //
+    case 105: //i
+    case 161: //í
+    case 73:  //I
+    case 214: //Í
+    //
+    case 111: //o
+    case 162: //ó
+    case 79:  //O
+    case 224: //Ó
+              //
+    case 117: //u
+    case 163: //ú
+    case 124: //ü
+    case 85:  //U
+    case 233: //Ú
+    case 154: /* Ü */ {contadorVocales++;}
+    default: {}
+    }
+  }
+  return contadorVocales;
+}
 
 int main()
 {
@@ -29,6 +67,8 @@ int main()
     string fraseDeUsuarioTotal;
     // definir e inicializar contador de frases final
     int contadorFrasesTotal = 0;
+    //variable para contar las vocales de todas las frases
+    int contadorVocalesGeneral = 0;
     do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
@@ -40,7 +80,7 @@ int main()
         cout <<"Elija una opción"<<endl;
         cin >> seleccion;
 
-        // validar
+        //validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
         bool opcionErronea = cin.bad() || !(seleccion >= 1 && seleccion <= 4);
         if(opcionErronea) {
@@ -96,12 +136,19 @@ int main()
                         fraseDeUsuarioTotal.append(fraseUsuario.append("\n"));
                         //Agrega un frase cada vez que el usuario ingrese una nueva
                         contadorFrasesTotal++;
-
+                        //Cuenta las vocales de todas las frases ingresadas
+                        contadorVocalesGeneral = contadorVocales(fraseDeUsuarioTotal);
 
                     } while (continuarAgregando); //Agregar frases hasta que el usuario no desee seguir agregando.
 
                     //muestra frase y el contador en numero (mientras)
-                    cout << "La frase total registradsa es: \n " << fraseDeUsuarioTotal <<"\n Total de frases analizadas: "<<  contadorFrasesTotal << endl;
+                    cout << "La frase total registradsa es: \n "
+                        << fraseDeUsuarioTotal
+                        << "\n Total de frases analizadas: "
+                        << contadorFrasesTotal
+                        << "\n Total de vocales contabilizadas:"
+                        << contadorVocalesGeneral
+                        << endl;
                     break;
                 }
                 case 2:{ cout <<"op 2"<<endl; break;}
