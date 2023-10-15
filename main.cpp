@@ -69,6 +69,8 @@ int main()
     int contadorFrasesTotal = 0;
     //variable para contar las vocales de todas las frases
     int contadorVocalesGeneral = 0;
+    //Variable para guardar la última frase que ingresó el usuario
+    string ultimaFraseRegistrada;
     do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
@@ -134,6 +136,8 @@ int main()
                         }
                         // Agregar la frase registrada a la frase total.
                         fraseDeUsuarioTotal.append(fraseUsuario.append("\n"));
+                        //Guarda la última frase del usuario
+                        ultimaFraseRegistrada = fraseUsuario;
                         //Agrega un frase cada vez que el usuario ingrese una nueva
                         contadorFrasesTotal++;
                         //Cuenta las vocales de todas las frases ingresadas
