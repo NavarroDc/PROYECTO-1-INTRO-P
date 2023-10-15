@@ -65,15 +65,37 @@ int main()
                         std::getline(std::cin, fraseUsuario);
                         cout <<" "<<endl;
                         cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
-                        string respuestaUsuario = "";
+                        string respuestaUsuario;
                         cin>>respuestaUsuario;
-                        // Preguntar si se desea regresar al menu principal.
-                        if (respuestaUsuario == "S" || respuestaUsuario == "s" ){
+
+                        // Preguntar hasta que sea una respuesta válida  S o N.
+                        // La función compare retorna un entero, 0 cuando son iguales y
+                        // diferente de cero cuando no son iguales.
+                        while (respuestaUsuario.compare("s") != 0 &&
+                               respuestaUsuario.compare("S") != 0 &&
+                               respuestaUsuario.compare("N") != 0 &&
+                               respuestaUsuario.compare("n") != 0 )
+                        {
+                            cout << " ";
+                            cout << "Error, sólo deber digitar S o N." <<endl;
+                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            cin>>respuestaUsuario;
+                        }
+
+                        // Validar si se desea regresar al menu principal.
+                        if (respuestaUsuario.compare("S") == 0 || respuestaUsuario.compare("s") == 0 ){
                             continuarAgregando = false;
                         }
+                        // desea seguir agregando
+                        if (respuestaUsuario.compare("N") == 0 || respuestaUsuario.compare("n") == 0 ){
+                            continuarAgregando = true;
+                        }
+                        // Agregar la frase registrada a la frase total.
                         fraseDeUsuarioTotal.append(fraseUsuario);
 
-                    } while (continuarAgregando);
+                    } while (continuarAgregando); //Agregar frases hasta que el usuario no desee seguir agregando.
+
+
                     cout << "La frase total registradsa es: " << fraseDeUsuarioTotal << endl;
                     break;
                 }
