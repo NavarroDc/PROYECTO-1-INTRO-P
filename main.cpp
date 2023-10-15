@@ -158,35 +158,38 @@ int main()
                     break;
                 }
                 case 2:{
+                    bool continuar = true;
                     do{
-                //Mostrar Texto: última frase ingresada
-                cout <<"Texto(última frase agregada): "<< ultimaFraseRegistrada << endl;
-                //Cuántas vocales tiene esa última frase
-                int vocalesPorFrase = contadorVocales(ultimaFraseRegistrada);
-                //Mostrar la cantidad de vocales de la última frase
-                cout <<"Total general de vocales:  "<< vocalesPorFrase << endl; break;
-                //Preguntar si quiere regresar al menu principal
-                cout <<" "<<endl;
-                cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
-                string respuestaUsuario;
-                cin>>respuestaUsuario;
-                // Preguntar hasta que sea una respuesta válida  S o N.
-                // La función compare retorna un entero, 0 cuando son iguales y
-                // diferente de cero cuando no son iguales.
-                while(respuestaUsuario.compare("s") != 0 &&
-                      respuestaUsuario.compare("S") != 0 &&
-                      respuestaUsuario.compare("N") != 0 &&
-                      respuestaUsuario.compare("n") != 0){
-                 //Lo que debe mostrar si la respuesta no es S o N
-                      cout << " ";
-                      cout << "Error, sólo deber digitar S o N." <<endl;
-                      cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        //Mostrar Texto: última frase ingresada
+                        cout <<"Texto(última frase agregada): "<< ultimaFraseRegistrada << endl;
+                        //Cuántas vocales tiene esa última frase
+                        int vocalesPorFrase = contadorVocales(ultimaFraseRegistrada);
+                        //Mostrar la cantidad de vocales de la última frase
+                        cout <<"Total general de vocales:  "<< vocalesPorFrase << endl;
+                        //Preguntar si quiere regresar al menu principal
+                        cout <<" "<<endl;
+                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        string respuestaUsuario;
                         cin>>respuestaUsuario;
-                        if (respuestaUsuario.compare("S") == 0 || respuestaUsuario.compare("s") == 0 ){
-                            respuestaUsuario = false;
+                        // Preguntar hasta que sea una respuesta válida  S o N.
+                        // La función compare retorna un entero, 0 cuando son iguales y
+                        // diferente de cero cuando no son iguales.
+                        while(respuestaUsuario.compare("s") != 0 &&
+                              respuestaUsuario.compare("S") != 0 &&
+                              respuestaUsuario.compare("N") != 0 &&
+                              respuestaUsuario.compare("n") != 0){
+                            //Lo que debe mostrar si la respuesta no es S o N
+                            cout << " ";
+                            cout << "Error, sólo deber digitar S o N." <<endl;
+                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            cin>>respuestaUsuario;
                         }
-                }
-                    }while (respuestaUsuario);
+                        // sale del while cuando es una respuesta valida
+                        if (respuestaUsuario.compare("S") == 0 || respuestaUsuario.compare("s") == 0 ){
+                            continuar = false;
+                        }
+                    }while (continuar);
+                    break; // contiunue ejecutando el caso tres.
                 }
 
                 case 3:{
