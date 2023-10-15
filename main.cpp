@@ -146,13 +146,13 @@ int main()
                     } while (continuarAgregando); //Agregar frases hasta que el usuario no desee seguir agregando.
 
                     //muestra frase y el contador en numero (mientras)
-                    cout << "La frase total registradsa es: \n "
-                        << fraseDeUsuarioTotal
-                        << "\n Total de frases analizadas: "
-                        << contadorFrasesTotal
-                        << "\n Total de vocales contabilizadas:"
-                        << contadorVocalesGeneral
-                        << endl;
+                    cout<< "La frase total registradsa es: \n "
+                        << fraseDeUsuarioTotal << endl;
+                        //<< "\n Total de frases analizadas: "
+                        //<< contadorFrasesTotal
+                        //<< "\n Total de vocales contabilizadas:"
+                        //<< contadorVocalesGeneral
+                        //<< endl;
                     break;
                 }
                 case 2:{
@@ -166,7 +166,14 @@ int main()
 
 
                 }
-                case 3:{ cout <<"op 3"<<endl; break;}
+                case 3:{
+                    cout << "\n Total de frases analizadas: "
+                        << contadorFrasesTotal
+                        << "\n Total de vocales contabilizadas:"
+                        << contadorVocalesGeneral
+                        << endl;
+                    break;
+                }
                 case 4:{
                     cout <<"Salir del Programa" <<endl;
                     salir = true;
