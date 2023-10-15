@@ -6,7 +6,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
-#include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,6 +24,9 @@ int main()
     //
     bool salir = false;
     int seleccion = 0;
+
+    // Todas las frases agregadas.
+    string fraseDeUsuarioTotal;
     do {
         cout <<"Cuenta Vocales"<<endl;
         cout <<" "<<endl;
@@ -38,8 +41,7 @@ int main()
         // validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
         bool opcionErronea = cin.bad() || !(seleccion >= 1 && seleccion <= 4);
-        if(opcionErronea)
-        {
+        if(opcionErronea) {
            cout <<"Error, sólo puede escribir un número del 1 al 4."<<endl;
            cin.clear();
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -53,61 +55,41 @@ int main()
         else{
             switch(seleccion) {
                 case 1:{
-                    char frase[100];
-                    bool regresarMenu = false;
 
+                    bool continuarAgregando = true;
                     do {
+                        string fraseUsuario;
                         cout <<" "<<endl;
-                        cout <<"Escriba una frase que tenga menos de 100 caracteres."<<endl;
-                        cin.getline(frase,100,'\n');
-
-                        for(int i=0;i<=100;i++){
-
+                        cout <<"Escriba una frase que tenga menos de 100 caracteres"<<endl;
+                        cin.ignore();
+                        std::getline(std::cin, fraseUsuario);
+                        cout <<" "<<endl;
+                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        string respuestaUsuario = "";
+                        cin>>respuestaUsuario;
+                        // Preguntar si se desea regresar al menu principal.
+                        if (respuestaUsuario == "S"){
+                            continuarAgregando = false;
                         }
+                        fraseDeUsuarioTotal.append(fraseUsuario);
 
-
-
-
-
-
-                    }while(!regresarMenu);
+                    } while (continuarAgregando);
+                    cout << "La frase total registradsa es: " << fraseDeUsuarioTotal << endl;
+                    break;
                 }
-
-
-
-
-
-
-
-
-
-
-             case 2:{ cout <<"op 2"<<endl; break;}
-
-
-
-
-
-             case 3:{ cout <<"op 3"<<endl; break;}
-
-
-
-
-
-             case 4:{
-                 cout <<"Salir del Programa" <<endl;
-                 salir = true;
-                 break;
-            }
-
-
-             default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
+                case 2:{ cout <<"op 2"<<endl; break;}
+                case 3:{ cout <<"op 3"<<endl; break;}
+                case 4:{
+                    cout <<"Salir del Programa" <<endl;
+                    salir = true;
+                    break;
+                }
+                default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
             }
             cout <<" " <<endl;
             esperarYLimpiar();
          }
-
-    }while(!salir);
-
+        }while(!salir);
     return 0;
 }
+
