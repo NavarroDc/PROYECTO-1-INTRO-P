@@ -68,7 +68,7 @@ int main()
                         string respuestaUsuario = "";
                         cin>>respuestaUsuario;
                         // Preguntar si se desea regresar al menu principal.
-                        if (respuestaUsuario == "S"){
+                        if (respuestaUsuario == "S" || respuestaUsuario == "s" ){
                             continuarAgregando = false;
                         }
                         fraseDeUsuarioTotal.append(fraseUsuario);
