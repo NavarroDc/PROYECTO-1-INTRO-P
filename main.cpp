@@ -105,11 +105,22 @@ int main()
                     bool continuarAgregando = true;
                     do {
                         string fraseUsuario;
-                        cout <<" "<<endl;
-                        cout <<"Escriba una frase que tenga menos de 100 caracteres"<<endl;
-                        cin.ignore();
-                        std::getline(std::cin, fraseUsuario);
-                        cout <<" "<<endl;
+                        bool fraseInValida = true;
+                        do {
+                            cout <<" "<<endl;
+                            cout <<"Escriba una frase que tenga menos de 100 caracteres "<<endl;
+                            cin.ignore();
+                            std::getline(std::cin, fraseUsuario);
+                            cout <<" "<<endl;
+                            // Si la frase es menor o igual a 100 caracteres, deterner el loop
+                            if (fraseUsuario.length() <= 100){
+                                fraseInValida = false;
+                            } else{
+                                cout <<" "<<endl;
+                                cout <<"Frase supera los 100 caracteres, digitar una frase de nuevo: "<<endl;
+                            }
+
+                        } while(fraseInValida); // Preguntar hasta que la frase sea No Inválida = Válida
                         cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
                         string respuestaUsuario;
                         cin>>respuestaUsuario;
