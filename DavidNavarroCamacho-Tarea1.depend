@@ -3,9 +3,13 @@
 	<iostream>
 	<limits>
 
-1697406191 source:c:\users\angel\onedrive\documentos\github\proyecto-1-intro-p\main.cpp
+1697417230 source:c:\users\angel\onedrive\documentos\github\proyecto-1-intro-p\main.cpp
 	<iostream>
 	<limits>
 	<string>
 	<algorithm>
+	<wchar.h>
+	<stdio.h>
+	<fcntl.h>
+	<io.h>
 

@@ -7,14 +7,17 @@
 #include <limits>
 #include <string>
 #include <algorithm>
+#include <wchar.h>
+#include <locale.h>
 
 using namespace std;
+
 
 void esperarYLimpiar() {
     system("Pause");
     system("CLS");
 }
-int contadorVocales(string miFrase) {
+int contadorVocales(std::wstring miFrase) {
   int contadorVocales = 0;
   for (int i = 0; i < miFrase.length(); i++) {
     int caracterCode = int(miFrase[i]);
@@ -56,39 +59,35 @@ int contadorVocales(string miFrase) {
 
 int main()
 {
-    // Imprimir tildes
-
-    setlocale(LC_ALL,"");
-    //
     bool salir = false;
     int seleccion = 0;
 
     // Todas las frases agregadas.
-    string fraseDeUsuarioTotal;
+    std::wstring fraseDeUsuarioTotal;
     // definir e inicializar contador de frases final
     int contadorFrasesTotal = 0;
     //variable para contar las vocales de todas las frases
     int contadorVocalesGeneral = 0;
     //Variable para guardar la última frase que ingresó el usuario
-    string ultimaFraseRegistrada;
+    std::wstring ultimaFraseRegistrada;
     //Variable para verificar si el usuario quiere regresar al menú principal
     string respuestaUsuario;
     do {
-        cout <<"Cuenta Vocales"<<endl;
-        cout <<" "<<endl;
-        cout <<"1. Ingresar frase a trabajar"<<endl;
-        cout <<"2. Contar vocales"<<endl;
-        cout <<"3. Resultados"<<endl;
-        cout <<"4. Salir del Programa"<<endl;
-        cout <<" "<<endl;
-        cout <<"Elija una opción"<<endl;
+        wcout <<"Cuenta Vocales"<<endl;
+        wcout <<" "<<endl;
+        wcout <<"1. Ingresar frase a trabajar"<<endl;
+        wcout <<"2. Contar vocales"<<endl;
+        wcout <<"3. Resultados"<<endl;
+        wcout <<"4. Salir del Programa"<<endl;
+        wcout <<" "<<endl;
+        printf("Elija una opci%cn\n",162);
         cin >> seleccion;
 
         //validar
         //Condiciones, se ingresa una letra o el número está fuera del rango.
         bool opcionErronea = cin.bad() || !(seleccion >= 1 && seleccion <= 4);
         if(opcionErronea) {
-           cout <<"Error, sólo puede escribir un número del 1 al 4."<<endl;
+           wcout <<"Error, debe escribir un valor del 1 al 4."<<endl;
            cin.clear();
            cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
@@ -104,24 +103,24 @@ int main()
 
                     bool continuarAgregando = true;
                     do {
-                        string fraseUsuario;
+                        std::wstring fraseUsuario;
                         bool fraseInValida = true;
                         do {
                             cout <<" "<<endl;
-                            cout <<"Escriba una frase que tenga menos de 100 caracteres "<<endl;
-                            cin.ignore();
-                            std::getline(std::cin, fraseUsuario);
-                            cout <<" "<<endl;
+                            wcout <<"Escriba una frase que tenga menos de 100 caracteres "<<endl;
+                            wcin.ignore();
+                            std::getline(std::wcin, fraseUsuario);
+                            wcout <<" "<<endl;
                             // Si la frase es menor o igual a 100 caracteres, deterner el loop
                             if (fraseUsuario.length() <= 100){
                                 fraseInValida = false;
                             } else{
-                                cout <<" "<<endl;
-                                cout <<"Frase supera los 100 caracteres, digitar una frase de nuevo: "<<endl;
+                                wcout <<" "<<endl;
+                                wcout <<"Frase supera los 100 caracteres, digitar una frase de nuevo: "<<endl;
                             }
 
                         } while(fraseInValida); // Preguntar hasta que la frase sea No Inválida = Válida
-                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        printf("%cDesea regresar al men%c principal? (S/N) \n", 168,163);
                         string respuestaUsuario;
                         cin>>respuestaUsuario;
 
@@ -133,9 +132,9 @@ int main()
                                respuestaUsuario.compare("N") != 0 &&
                                respuestaUsuario.compare("n") != 0 )
                         {
-                            cout << " ";
-                            cout << "Error, sólo deber digitar S o N." <<endl;
-                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            wcout << " ";
+                            printf("Error, s%clo deber digitar S o N. \n", 162);
+                            printf("%cDesea regresar al men%c principal? (S/N)\n", 168 , 163 );
                             cin>>respuestaUsuario;
                         }
 
@@ -148,7 +147,7 @@ int main()
                             continuarAgregando = true;
                         }
                         // Agregar la frase registrada a la frase total.
-                        fraseDeUsuarioTotal.append(fraseUsuario.append("\n"));
+                        fraseDeUsuarioTotal.append(fraseUsuario);
                         //Guarda la última frase del usuario
                         ultimaFraseRegistrada = fraseUsuario;
                         //Agrega un frase cada vez que el usuario ingrese una nueva
@@ -163,14 +162,18 @@ int main()
                     bool continuar = true;
                     do{
                         //Mostrar Texto: última frase ingresada
-                        cout <<"Texto(última frase agregada): "<< ultimaFraseRegistrada << endl;
+                        printf("Texto(%cltima frase agregada): ", 163);
+
+                        //printf(" %s\n ", ultimaFraseRegistrada);
+                        wcout << ultimaFraseRegistrada << endl;
+
                         //Cuántas vocales tiene esa última frase
                         int vocalesPorFrase = contadorVocales(ultimaFraseRegistrada);
                         //Mostrar la cantidad de vocales de la última frase
-                        cout <<"Total general de vocales:  "<< vocalesPorFrase << endl;
+                        wcout <<"Total general de vocales:  "<< vocalesPorFrase << endl;
                         //Preguntar si quiere regresar al menu principal
-                        cout <<" "<<endl;
-                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        wcout <<" "<<endl;
+                        printf("%cDesea regresar al men%c principal? (S/N)\n", 168, 163);
                         string respuestaUsuario;
                         cin>>respuestaUsuario;
                         // Preguntar hasta que sea una respuesta válida  S o N.
@@ -181,9 +184,9 @@ int main()
                               respuestaUsuario.compare("N") != 0 &&
                               respuestaUsuario.compare("n") != 0){
                             //Lo que debe mostrar si la respuesta no es S o N
-                            cout << " ";
-                            cout << "Error, sólo deber digitar S o N." <<endl;
-                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            wcout << " ";
+                            printf("Error, s%clo deber digitar S o N.\n", 162 );
+                            printf("%cDesea regresar al men%c principal? (S/N) \n", 168,163);
                             cin>>respuestaUsuario;
                         }
                         // sale del while cuando es una respuesta valida
@@ -198,14 +201,14 @@ int main()
                     bool continuar = true;
                     do {
                         // imprimir los resultados
-                        cout << "\n Total de frases analizadas: "
+                        wcout << "\n Total de frases analizadas: "
                             << contadorFrasesTotal
                             << "\n Total de vocales contabilizadas:"
                             << contadorVocalesGeneral
                             << endl;
 
-                        cout <<" "<<endl;
-                        cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                        wcout <<" "<<endl;
+                        printf("%cDesea regresar al men%c principal? (S/N) \n", 168,163);
                         string respuestaUsuario;
                         cin>>respuestaUsuario;
                         // Preguntar hasta que sea una respuesta válida  S o N.
@@ -216,9 +219,9 @@ int main()
                               respuestaUsuario.compare("N") != 0 &&
                               respuestaUsuario.compare("n") != 0){
                             //Lo que debe mostrar si la respuesta no es S o N
-                            cout << " ";
-                            cout << "Error, sólo deber digitar S o N." <<endl;
-                            cout <<"¿Desea regresar al menú principal? (S/N)"<<endl;
+                            wcout << " ";
+                            printf("Error, s%clo deber digitar S o N. \n", 162);
+                            printf("%cDesea regresar al men%c principal? (S/N) \n", 168,163);
                             cin>>respuestaUsuario;
                         }
                         // sale del while cuando es una respuesta valida
@@ -230,13 +233,13 @@ int main()
                 }
 
                 case 4:{
-                    cout <<"Salir del Programa" <<endl;
+                    wcout <<"Salir del Programa" <<endl;
                     salir = true;
                     break;
                 }
-                default:{cout <<"Error, sólo puede escribir un número del 1 al 4"<<endl;}
+                default:{wcout <<"Error, debe escribir un valor del 1 al 4."<<endl;}
             }
-            cout <<" " <<endl;
+            wcout <<" " <<endl;
             esperarYLimpiar();
          }
         }while(!salir);
